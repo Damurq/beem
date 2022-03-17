@@ -583,6 +583,18 @@ class Comment_options(GrapheneObject):
                      Bool(bool(kwargs["allow_curation_rewards"]))),
                     ('extensions', extensions),
                 ]))
+        if not "percent_hbd" in kwargs and not "percent_steem_dollars" in kwargs:
+            super(Comment_options, self).__init__(
+                OrderedDict([
+                    ('author', String(kwargs["author"])),
+                    ('permlink', String(kwargs["permlink"])),
+                    ('max_accepted_payout',
+                        Amount(kwargs["max_accepted_payout"], prefix=prefix)),
+                    ('allow_votes', Bool(bool(kwargs["allow_votes"]))),
+                    ('allow_curation_rewards',
+                        Bool(bool(kwargs["allow_curation_rewards"]))),
+                    ('extensions', extensions),
+                ]))     
         else:
             super(Comment_options, self).__init__(
                 OrderedDict([

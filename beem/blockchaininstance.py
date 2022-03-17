@@ -780,6 +780,13 @@ class BlockChainInstance(object):
             return False
         return 'STEEM_CHAIN_ID' in config
 
+    @property
+    def is_blurt(self):
+        config = self.get_config(use_stored_data=True)
+        if config is None:
+            return False
+        return 'BLURT_CHAIN_ID' in config
+
     def set_default_account(self, account):
         """ Set the default account to be used
         """
@@ -2148,7 +2155,28 @@ class BlockChainInstance(object):
                     "beneficiaries":
                     options.get("beneficiaries", []),
                     "prefix": self.prefix,
-                })            
+                })    
+                
+        elif self.is_blurt:
+            comment_op = operations.Comment_options(
+                **{
+                    "author":
+                    author,
+                    "permlink":
+                    permlink,
+                    "max_accepted_payout":
+                    options.get("max_accepted_payout", default_max_payout),
+                    "allow_votes":
+                    options.get("allow_votes", True),
+                    "allow_curation_rewards":
+                    options.get("allow_curation_rewards", True),
+                    "extensions":
+                    options.get("extensions", []),
+                    "beneficiaries":
+                    options.get("beneficiaries", []),
+                    "prefix": self.prefix,
+                })
+
         else:
             comment_op = operations.Comment_options(
                 **{
