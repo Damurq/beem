@@ -583,7 +583,7 @@ class Comment_options(GrapheneObject):
                      Bool(bool(kwargs["allow_curation_rewards"]))),
                     ('extensions', extensions),
                 ]))
-        if not "percent_hbd" in kwargs and not "percent_steem_dollars" in kwargs:
+        elif not "percent_hbd" in kwargs and not "percent_steem_dollars" in kwargs:
             super(Comment_options, self).__init__(
                 OrderedDict([
                     ('author', String(kwargs["author"])),
