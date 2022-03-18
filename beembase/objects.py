@@ -113,6 +113,8 @@ class Operation(GPHOperation):
         self.appbase = kwargs.pop("appbase", False)
         self.prefix = kwargs.pop("prefix", default_prefix)
         super(Operation, self).__init__(*args, **kwargs)
+        if self.prefix == "BLT" and self.opId == 19:
+            self.opId = 13
 
     def _getklass(self, name):
         module = __import__("beembase.operations", fromlist=["operations"])
