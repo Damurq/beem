@@ -16,7 +16,7 @@ except LookupError:
     ascii = codecs.lookup('ascii')
     codecs.register(lambda name, enc=ascii: {True: enc}.get(name == 'mbcs'))
 
-VERSION = '0.24.24'
+VERSION = '0.24.25'
 
 tests_require = ['mock >= 2.0.0', 'pytest', 'pytest-mock', 'parameterized']
 
@@ -66,15 +66,15 @@ if __name__ == '__main__':
     setup(
         name='beem-blurt-discord',
         version=VERSION,
-        description='Unofficial Python library for BLURT and STEEM',
+        description='Unofficial Python library for BLURT',
         long_description=get_long_description(),
-        download_url='https://github.com/damurq/beem/tarball/' + VERSION,
+        download_url='https://github.com/Damurq/beem/tarball/' + VERSION,
         author='Holger Nahrstaedt',
         author_email='nahrstaedt@gmail.com',
         maintainer='Holger Nahrstaedt',
         maintainer_email='nahrstaedt@gmail.com',
-        url='https://github.com/damurq/beem/',
-        keywords=['blurt', 'steem', 'library', 'api', 'rpc'],
+        url='https://github.com/Damurq/beem/',
+        keywords=['blurt', 'library', 'api', 'rpc'],
         packages=[
             "beem",
             "beemapi",
