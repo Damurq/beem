@@ -2177,10 +2177,11 @@ class Account(BlockchainObject):
                 # future hard-forks. Thus we cannot take it for granted.
                 immutable = op.copy()
                 immutable.update(block_props)
-                immutable.update({
-                    'account': account_name,
-                    'type': op_type,
-                })
+                if not (op_type in ["account_witness_proxy", "account_witness_vote"]):
+                    immutable.update({
+                        'account': account_name,
+                        'type': op_type,
+                    })
                 _id = Blockchain.hash_op(immutable)
                 immutable.update({
                     '_id': _id,
