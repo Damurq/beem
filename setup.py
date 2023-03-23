@@ -16,7 +16,7 @@ except LookupError:
     ascii = codecs.lookup('ascii')
     codecs.register(lambda name, enc=ascii: {True: enc}.get(name == 'mbcs'))
 
-VERSION = '0.24.29'
+VERSION = '0.24.30'
 
 tests_require = ['mock >= 2.0.0', 'pytest', 'pytest-mock', 'parameterized']
 
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     write_version_py('beemgraphenebase/version.py')
 
     setup(
-        name='beem',
+        name='beem-witness-library',
         version=VERSION,
         description='Unofficial Python library for HIVE and STEEM',
         long_description=get_long_description(),
